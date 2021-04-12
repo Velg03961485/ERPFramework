@@ -1,0 +1,5 @@
+node_modules
+.vscode
+todo.txt
+.zip
+package-lock.json
