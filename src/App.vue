@@ -1,30 +1,45 @@
 <template>
-<!--  <div id="nav">-->
-<!--    <router-link to="/">Home</router-link> |-->
-<!--    <router-link to="/about">About</router-link>-->
-<!--  </div>-->
-  <router-view/>
+  <div id="app" :style="{height:fullHeight}">
+    <router-view/>
+  </div>
+
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script >
+export default {
+  name: 'App',
+  data () {
+    return {
+      fullHeight: document.documentElement.clientHeight
     }
+  },
+  created: function () {
+    if (sessionStorage.getItem("store") ) {
+      this.$store.replaceState(Object.assign({}, this.$store.state,JSON.parse(sessionStorage.getItem("store"))))
+    }
+
+    //在页面刷新时将vuex里的信息保存到sessionStorage里
+    window.addEventListener("beforeunload",()=>{
+      sessionStorage.setItem("store",JSON.stringify(this.$store.state))
+    })
+  },
+  mounted: function () {
+    const that = this
+    window.onresize = () => {
+      return (() => {
+        window.fullHeight = document.documentElement.clientHeight
+        that.fullHeight = window.fullHeight + 'px'
+      })()
+    };
+
+  },
+  methods: {
   }
 }
+</script>
+
+<!--全局样式-->
+<style lang="scss">
+  @import "assets/css/App/App.scss";
 </style>
+<!--<style  src="@/assets/css/App/App.scss"></style>-->
