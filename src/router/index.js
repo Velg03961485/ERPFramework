@@ -1,21 +1,55 @@
+
+
 import { createRouter, createWebHistory } from 'vue-router'
-// import Home from '../views/Home.vue'
-import Login from '../views/login/login'
+//Content
+import { Layout,  } from "../views/layout"; // 页面整体布局
+// import { topRouterMap } from "./topRouter";
+import businessRouter from './modules/business'
+// import statisticsRouter from './modules/statistics'
+
+// function filterTopRouterMap(name) {
+//   let router = topRouterMap.find((item) => {
+//     return item.parentName === name;
+//   });
+//   return router.data; // arr
+// }
+
+
 
 const routes = [
+
   {
-    path: '/',
-    name: 'Login',
-    component: Login
+    path: '',
+    component: Layout,
+    redirect: '/index/index',
+    hidden: true
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  { path: '/login', name: 'login', component: () => import('@/views/login/login'), hidden: true },
+  { path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
+  { path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
+  {
+    path: '/index',
+    name: 'index',
+    component: Layout,
+    meta: {
+      title: '首页',
+      icon: 'icondashboard',
+    },
+    noDropdown: true,
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        meta: {
+          title: '首页',
+          icon: 'icondashboard',
+          routerType: 'leftmenu'
+        },
+        component: () => import('../views/index/index'),
+      }
+    ]
+  },
+
 ]
 
 const router = createRouter({
@@ -23,4 +57,12 @@ const router = createRouter({
   routes
 })
 
+//异步路由（需要权限的页面）
+export const asyncRouterMap = [
+  businessRouter,
+  // statisticsRouter
+];
+
 export default router
+
+

@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.39",
+    "js-cookie": "^2.2.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -39,7 +40,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-unused-components": "off"
+    }
   },
   "browserslist": [
     "> 1%",
