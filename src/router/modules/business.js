@@ -1,6 +1,6 @@
 /** When your routing table is too long, you can split it into small modules**/
 
-import { Layout } from "../../views/layout"; // 页面整体布局
+import { Layout } from "@/views/layout"; // 页面整体布局
 
 const businessRouter = {
   path: '/business',

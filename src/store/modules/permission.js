@@ -1,35 +1,35 @@
 import { asyncRouterMap, constantRouterMap } from '@/router'
-import { topRouterMap } from "@/router/topRouter";
-import * as mutils from '@/utils/mUtils'
+// import { topRouterMap } from "@/router/topRouter";
+// import * as mutils from '@/utils/mUtils'
 
 
 
 // 循环追加顶栏菜单
-function addTopRouter() {
-  asyncRouterMap.forEach((item) => {
-    if (item.children && item.children.length >= 1) {
-      item.children.forEach((sitem) => {
-        topRouterMap.forEach((citem) => {
-          if (sitem.name === citem.parentName) {
-            let newChildren = item.children.concat(citem.topmenulist); // arr
-            item.children = newChildren;
-          }
-        })
-      })
-    }
-  })
-  return asyncRouterMap;
-}
+// function addTopRouter() {
+//   asyncRouterMap.forEach((item) => {
+//     if (item.children && item.children.length >= 1) {
+//       item.children.forEach((sitem) => {
+//         topRouterMap.forEach((citem) => {
+//           if (sitem.name === citem.parentName) {
+//             let newChildren = item.children.concat(citem.topmenulist); // arr
+//             item.children = newChildren;
+//           }
+//         })
+//       })
+//     }
+//   })
+//   return asyncRouterMap;
+// }
 
 // 获取到当前路由对应顶部子菜单
-function filterTopRouters(data) {
-  let topRouters = topRouterMap.find((item) => {
-    return item.parentName === data.name
-  })
-  if (!mutils.isEmpty(topRouters)) {
-    return topRouters.topmenulist;
-  }
-}
+// function filterTopRouters(data) {
+//   let topRouters = topRouterMap.find((item) => {
+//     return item.parentName === data.name
+//   })
+//   if (!mutils.isEmpty(topRouters)) {
+//     return topRouters.topmenulist;
+//   }
+// }
 
 /**
  * 通过meta.role判断是否与当前用户权限匹配
