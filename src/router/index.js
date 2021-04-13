@@ -17,14 +17,13 @@ import businessRouter from './modules/business'
 
 
 export const constantRouterMap = [
-
+  { path: '', name: 'login', component: () => import('@/views/login/login'), hidden: true },
   {
-    path: '',
+    path: '/index',
     component: Layout,
     redirect: '/index/index',
     hidden: true
   },
-  { path: '/login', name: 'login', component: () => import('@/views/login/login'), hidden: true },
   { path: '/404', component: () => import('@/views/errorPage/404'), hidden: true },
   { path: '/401', component: () => import('@/views/errorPage/401'), hidden: true },
   {
