@@ -26,7 +26,7 @@ export default {
       }
     },
   	mounted(){
-       mutils.setContentHeight(this,this.$refs.contain,250);
+        mutils.setContentHeight(this,this.$refs.contain,250);
 		},
     methods: {
     }

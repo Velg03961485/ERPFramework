@@ -31,9 +31,10 @@ const menu = {
             }
            state.sidebar.opened = !state.sidebar.opened
         },
-        [types.INIT_LEFT_MENU] (state) {  
-            state.sidebar = state.sidebar
-        },
+        // [types.INIT_LEFT_MENU] (state) {
+        //     // state.sidebar.opened = state.sidebar.opened
+        //     // state.sidebar.width = state.sidebar.width
+        // },
         [types.SET_LEFT_COLLAPSE] (state) {  
             state.isCollapse = !state.isCollapse 
         },

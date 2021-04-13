@@ -4,7 +4,7 @@ import Layout from './home.vue'
 import Content from './content.vue'
 import topMenu from './topMenu.vue'
 
-export default {
+export  {
     Layout,
     Content,
     bread,

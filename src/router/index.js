@@ -16,7 +16,7 @@ import businessRouter from './modules/business'
 
 
 
-const routes = [
+export const constantRouterMap = [
 
   {
     path: '',
@@ -54,8 +54,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes:constantRouterMap
 })
+
+export default router
 
 //异步路由（需要权限的页面）
 export const asyncRouterMap = [
@@ -63,6 +65,6 @@ export const asyncRouterMap = [
   // statisticsRouter
 ];
 
-export default router
+
 
 
